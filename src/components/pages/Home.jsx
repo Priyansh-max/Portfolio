@@ -44,7 +44,7 @@ const Home = () => {
         {
           company: "National Ilan University",
           position: "Machine Learning Researcher",
-          period: "May-2024 - Aug-2022",
+          period: "May-2024 - Aug-2024",
           location: "Yilan, Taiwan",
           type: "Internship",
           mode: "On-site",
