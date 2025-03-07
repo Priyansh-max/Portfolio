@@ -1,28 +1,32 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './components/pages/Home';
-import Contact from './components/pages/Contact';
-import Projects from './components/pages/Projects';
-import Resume from './components/pages/Resume';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Navigation from './components/shared/Navigation';
+import Home from './components/pages/Home';
+import Projects from './components/pages/Projects';
+import Loader from './components/Loader';
 
-function App() {
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <Loader onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
     <Router>
       <div className="min-h-screen bg-white">
         <Navigation />
-        <main className="max-w-4xl mx-auto px-4">
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Navigate to="/home" replace />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+        </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
