@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-body text-gray-800 bg-white m-0 min-h-screen w-full;
+  }
+  body {
+    @apply m-0;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-custom;
+  }
+}
+
+/* Card Flip Classes */
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../public/fonts/Moggly.woff2') format('woff2'),
+       url('../public/fonts/Moggly.woff') format('woff'),
+       url('../public/fonts/Moggly.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('../public/fonts/Comfortaa-Light.woff2') format('woff2'),
+       url('../public/fonts/Comfortaa-Light.woff') format('woff'),
+       url('../public/fonts/Comfortaa-Light.ttf') format('truetype');
+}
+
+@layer components {
+  .profile-image {
+    @apply w-72 h-72 rounded-md bg-gradient-to-r from-pastel-pink to-pastel-purple p-1 flex-shrink-0;
+  }
+  .profile-image-inner {
+    @apply w-full h-full bg-white p-2 transition-transform duration-500 hover:rotate-6;
+  }
+  .wavy-border {
+    @apply relative;
+  }
+  .wavy-border::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-4 bg-repeat-x;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23A8D8EA' stroke-width='2' d='M0 5c25-8 75 8 100 0'/%3E%3C/svg%3E");
+  }
+  .polaroid {
+    @apply bg-white p-4 shadow-lg transform rotate-[-2deg] hover:rotate-0 transition-transform duration-300;
+  }
+  .skill-icon {
+    @apply w-16 h-16 mx-auto mb-4 text-pastel-purple transition-transform hover:scale-110 duration-300;
+  }
+  .social-links {
+    @apply flex justify-center gap-6 mt-8;
+  }
+  .social-icon {
+    @apply w-8 h-8 text-gray-600 hover:text-pastel-purple transition-colors duration-300;
+  }
+  .footer-text {
+    @apply text-center text-lg text-gray-500 mt-8 font-handwritten;
+  }
+  .resume-button {
+    @apply px-6 py-3 bg-gradient-to-r from-pastel-purple to-pastel-blue text-white rounded-full 
+    font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+}
+
+@layer utilities {
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
