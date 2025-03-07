@@ -185,7 +185,7 @@ const Projects = () => {
         <div className="flex justify-center items-center gap-6 mb-8">
           <div className="relative group">
             <motion.a
-              href="https://github.com/yourusername/portfolio"
+              href="https://github.com/Priyansh-max/Portfolio"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -202,21 +202,24 @@ const Projects = () => {
             </div>
           </div>
 
-          <div className="relative group">
-            <motion.button
+          {/* <div className="relative group">
+            <motion.a
+              href="upi://pay?pa=YOURUPIID@upi&pn=Priyansh%20Agarwal&cu=INR"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl"
             >
               <FaRupeeSign className="w-5 h-5" />
-            </motion.button>
+            </motion.a> */}
             
             {/* Rupee Tooltip */}
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-lg">
-              Send good stuff because why not
+            {/* <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-lg">
+              Support my work with UPI
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
             </div>
-          </div>
+          </div> */}
         </div>
         <motion.p 
           initial={{ opacity: 0 }}
