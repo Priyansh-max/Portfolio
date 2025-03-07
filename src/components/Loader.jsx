@@ -123,7 +123,6 @@ const Loader = ({ onLoadingComplete }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          Loading amazing stuff...
         </motion.div>
         <motion.div
           className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden"
