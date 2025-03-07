@@ -44,10 +44,10 @@
 
 @layer components {
   .profile-image {
-    @apply w-72 h-72 rounded-md bg-gradient-to-r from-pastel-pink to-pastel-purple p-1 flex-shrink-0;
+    @apply w-72 h-72 rounded-md bg-gradient-to-r from-pastel-pink to-pastel-purple flex-shrink-0;
   }
   .profile-image-inner {
-    @apply w-full h-full bg-white p-2 transition-transform duration-500 hover:rotate-6;
+    @apply w-full h-full bg-white transition-transform duration-500 hover:rotate-1;
   }
   .wavy-border {
     @apply relative;
