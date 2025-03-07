@@ -18,50 +18,58 @@ const Loader = ({ onLoadingComplete }) => {
     findMyTeam,
     niu,
     sixD,
-    iitkgp,
-    '/fonts/Moggly.woff2',
-    '/fonts/Comfortaa-Light.woff2'
+    iitkgp
+  ], []);
+
+  const fonts = useMemo(() => [
+    { name: 'CustomFont', url: '/fonts/Moggly.woff2' },
+    { name: 'Comfortaa', url: '/fonts/Comfortaa-Light.woff2' }
   ], []);
 
   useEffect(() => {
     let loadedCount = 0;
-    const totalAssets = assets.length;
+    const totalAssets = assets.length + fonts.length;
+
+    const loadFont = async (font) => {
+      try {
+        const fontFace = new FontFace(font.name, `url(${font.url})`);
+        const loadedFont = await fontFace.load();
+        document.fonts.add(loadedFont);
+        loadedCount++;
+        setProgress(Math.floor((loadedCount / totalAssets) * 100));
+      } catch (error) {
+        console.error(`Error loading font ${font.name}:`, error);
+        loadedCount++;
+        setProgress(Math.floor((loadedCount / totalAssets) * 100));
+      }
+    };
 
     const loadImage = (src) => {
       return new Promise((resolve) => {
-        if (src.includes('.woff2')) {
-          // Load fonts
-          const font = new FontFace('CustomFont', `url(${src})`);
-          font.load().then(() => {
-            loadedCount++;
-            setProgress(Math.floor((loadedCount / totalAssets) * 100));
-            resolve();
-          }).catch(() => {
-            loadedCount++;
-            setProgress(Math.floor((loadedCount / totalAssets) * 100));
-            resolve();
-          });
-        } else {
-          // Load images
-          const img = new Image();
-          img.src = src;
-          img.onload = img.onerror = () => {
-            loadedCount++;
-            setProgress(Math.floor((loadedCount / totalAssets) * 100));
-            resolve();
-          };
-        }
+        const img = new Image();
+        img.src = src;
+        img.onload = img.onerror = () => {
+          loadedCount++;
+          setProgress(Math.floor((loadedCount / totalAssets) * 100));
+          resolve();
+        };
       });
     };
 
-    Promise.all(assets.map(src => loadImage(src)))
-      .then(() => {
-        // Add a small delay for smooth transition
-        setTimeout(() => {
-          onLoadingComplete();
-        }, 2000);
-      });
-  }, [assets, onLoadingComplete]);
+    const loadAllAssets = async () => {
+      // Load fonts first
+      await Promise.all(fonts.map(font => loadFont(font)));
+      // Then load images
+      await Promise.all(assets.map(src => loadImage(src)));
+      
+      // Add a small delay for smooth transition
+      setTimeout(() => {
+        onLoadingComplete();
+      }, 500);
+    };
+
+    loadAllAssets();
+  }, [assets, fonts, onLoadingComplete]);
 
   return (
     <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
@@ -115,6 +123,7 @@ const Loader = ({ onLoadingComplete }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
+          Loading amazing stuff...
         </motion.div>
         <motion.div
           className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden"
