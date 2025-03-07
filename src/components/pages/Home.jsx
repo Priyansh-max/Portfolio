@@ -17,6 +17,7 @@ import niu from '../../assets/niu.jpg';
 import sixD from '../../assets/sixD.png';
 import findMyTeam from '../../assets/findmyteam.png';
 import iitkgp from '../../assets/iitkgp.png';
+import profile from '../../assets/profile.jpeg';
 
 const Home = () => {
     const [flippedCards, setFlippedCards] = useState({});
@@ -37,7 +38,8 @@ const Home = () => {
           type: "Internship",
           mode: "On-site",
           description: "As a developer, I am responsible for developing projects for clients. Currently working on a project for a client to build a VR application for elevator safety training for there technicians.",
-          logo: sixD
+          logo: sixD,
+          website: "https://sixdindia.com/"
         },
         {
           company: "National Ilan University",
@@ -47,7 +49,8 @@ const Home = () => {
           type: "Internship",
           mode: "On-site",
           description: "Worked on Computer Vision and Image Processing involving ball tracking in table tennis. Improved the overallaccuracy of the model by 27% over previous models.",
-          logo: niu
+          logo: niu,
+          website: "https://www.niu.edu.tw/en/"
         },
         {
           company: "IIT Kharagpur",
@@ -57,7 +60,8 @@ const Home = () => {
           type: "Internship",
           mode: "Hybrid",
           description: "Built python scripts for data visualization and analysis which helped increase the efficiency significantly.",
-          logo: iitkgp
+          logo: iitkgp,
+          website: "http://www.iitkgp.ac.in/"
         }
       ];
     
@@ -67,7 +71,7 @@ const Home = () => {
         description: "FindmyTeam is a project which allows developers to make a team for any kind of project. Post an idea and users can apply over it. Then the poster could select the best team for the project.",
         image: findMyTeam,
         technologies: ["React", "Expressjs", "Supabase","ChartJS", "Gemini" , "Javascript"],
-        github: "https://github.com/yourusername/chess-trainer",
+        github: "https://github.com/Priyansh-max/FindMyCoFounder",
         live: "https://chess-trainer-demo.com",
         status: "In Progress"
       },
@@ -76,7 +80,7 @@ const Home = () => {
         description: "PMIS is a platform which allows university placement cell to manage student record and data in a efficient manner eliminating manual paper and excel sheet.",
         image: pmis,
         technologies: ["React", "PostgreSQL", "Expressjs", "Prisma" , "Jwt" , "JavaScript"],
-        github: "https://github.com/yourusername/smart-home",
+        github: "https://github.com/Priyansh-max/PlacementManagementApp-PIMS-",
         live: "https://smart-home-demo.com",
         status: "In Progress"
       },
@@ -85,7 +89,7 @@ const Home = () => {
         description: "HireLink is a web3 platform which allows users to hire a developer for hourly bases and to have a 1 on 1 video call",
         image: devConnect,
         technologies: ["Next.js", "Blockchain", "Solidity", "WebRTC" , "Typescript"],
-        github: "https://github.com/yourusername/recipe-finder",
+        github: "https://github.com/Priyansh-max/HireLink",
         live: "https://recipe-finder-demo.com",
         status: "In Progress"
       }
@@ -107,16 +111,38 @@ const Home = () => {
                 >
                   <div className="profile-image">
                     <div className="profile-image-inner">
-                      {/* Add your profile image here */}
+                      <motion.img
+                        src={profile}
+                        alt="Priyansh Agarwal"
+                        className="w-full h-full object-cover rounded-md"
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                          duration: 0.8,
+                          delay: 0.2,
+                          ease: [0, 0.71, 0.2, 1.01]
+                        }}
+                      />
                     </div>
                   </div>
                   <div className="flex-1 text-center md:text-left max-w-xl"> 
-                    <h1 className="text-6xl mb-6 text-gray-800">Hello, I'm Priyansh</h1>
-                    <p className="text-xl mb-8 text-gray-600">
+                    <h1 className="text-6xl mb-4 text-gray-800">Hello, I'm Priyansh</h1>
+                    <p className="text-xl mb-2 text-gray-600">
                       A creative developer who loves building beautiful and functional projects.
                       I combine technical skills with artistic flair to create unique digital experiences.
                     </p>
-                    <div className="flex justify-center md:justify-start space-x-6">
+                    <motion.a
+                        href="mailto:priyanshagarwal3381@gmail.com"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="text-black hover:text-red-500 mb-2 relative group/email text-lg"
+                      >
+                        <span className="relative">
+                          priyanshagarwal3381@gmail.com
+                          <span className="absolute left-0 -bottom-0.5 w-full h-0.5 bg-red-600 origin-left transform scale-x-0 transition-transform duration-300 group-hover/email:scale-x-100"></span>
+                        </span>
+                    </motion.a>
+                    <div className="flex justify-center md:justify-start space-x-6 mt-4">
                       <motion.a
                         href="https://github.com/Priyansh-max"
                         target="_blank"
@@ -157,14 +183,7 @@ const Home = () => {
                       >
                         <FaLinkedin className="w-8 h-8" />
                       </motion.a>
-                      <motion.a
-                        href="mailto:priyanshagarwal3381@gmail.com"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="text-gray-800 hover:text-gray-600"
-                      >
-                        <MdEmail className="w-8 h-8" />
-                      </motion.a>
+
                     </div>
                   </div>
                 </motion.div>
@@ -190,13 +209,20 @@ const Home = () => {
                           <div className="flex-shrink-0 flex items-center gap-4">
                             <div className="w-20 h-20 rounded-lg overflow-hidden bg-white shadow-md mr-4">
                               {work.logo ? (
-                                <motion.img
-                                  src={work.logo}
-                                  alt={`${work.company} logo`}
-                                  className="w-full h-full object-contain p-2"
+                                <motion.a
+                                  href={work.website}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block w-full h-full"
                                   whileHover={{ scale: 1.05 }}
                                   transition={{ duration: 0.2 }}
-                                />
+                                >
+                                  <img
+                                    src={work.logo}
+                                    alt={`${work.company} logo`}
+                                    className="w-full h-full object-contain p-2 transition-transform duration-200"
+                                  />
+                                </motion.a>
                               ) : (
                                 <BriefcaseIcon className="w-full h-full p-3 text-pastel-purple" />
                               )}
@@ -370,7 +396,7 @@ const Home = () => {
                 <div className="flex justify-center items-center gap-6 mb-8">
                   <div className="relative group">
                     <motion.a
-                      href="https://github.com/Priyansh-max"
+                      href="https://github.com/Priyansh-max/Portfolio"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
@@ -387,21 +413,24 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <div className="relative group">
-                    <motion.button
+                  {/* <div className="relative group">
+                    <motion.a
+                      href="upi://pay?pa=7486949525@ptsbi@upi&pn=Priyansh%20Agarwal&cu=INR"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                       className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl"
                     >
                       <FaRupeeSign className="w-5 h-5" />
-                    </motion.button>
+                    </motion.a> */}
                     
                     {/* Rupee Tooltip */}
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-lg">
-                      Send good stuff because why not
+                    {/* <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-lg">
+                      Support my work with UPI
                       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <p className="footer-text text-center text-gray-600">Made with ❤️ by Priyansh Agarwal</p>
               </footer>

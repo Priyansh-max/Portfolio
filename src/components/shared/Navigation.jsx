@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Navigation = () => {
   const location = useLocation();
   const navItems = [
-    { icon: HomeIcon, to: '/home', label: 'Home' },
+    { icon: HomeIcon, to: '/', label: 'Home' },
     { icon: CodeBracketIcon, to: '/projects', label: 'Projects' },
   ];
 
