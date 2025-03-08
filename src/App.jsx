@@ -1,9 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/shared/Navigation';
 import Home from './components/pages/Home';
 import Projects from './components/pages/Projects';
 import Loader from './components/Loader';
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -20,10 +34,7 @@ const App = () => {
     <Router>
       <div className="min-h-screen bg-white">
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-        </Routes>
+        <AnimatedRoutes />
       </div>
     </Router>
   );
