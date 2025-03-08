@@ -88,7 +88,7 @@ const Projects = () => {
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-contain bg-white ml-4"
+                  className="w-full h-full object-contain bg-white p-4 rounded-lg"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 />
