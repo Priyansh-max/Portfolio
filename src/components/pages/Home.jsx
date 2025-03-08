@@ -95,8 +95,14 @@ const Home = () => {
       }
     ];
     
-      return (
-        <main className="min-h-screen w-full bg-white">
+    return (
+        <motion.main
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="min-h-screen w-full bg-white"
+        >
             <div className="max-w-4xl mx-auto">
               {/* Hero Section */}
               <Element name="about" className="px-4 py-8 mt-4 sm:px-6 lg:px-8">
@@ -375,7 +381,6 @@ const Home = () => {
                   <RouterLink 
                     to="/projects" 
                     className="group relative"
-                    onClick={() => window.scrollTo(0, 0)}
                   >
                     <motion.div
                       whileHover={{ scale: 1.1 }}
@@ -435,7 +440,7 @@ const Home = () => {
                 <p className="footer-text text-center text-gray-600">Made with ❤️ by Priyansh Agarwal</p>
               </footer>
             </div>
-        </main>
+        </motion.main>
     );
 };
 

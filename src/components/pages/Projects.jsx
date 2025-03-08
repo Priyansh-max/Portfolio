@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { FaRupeeSign } from 'react-icons/fa';
 import devConnect from '../../assets/devConnect.png';
@@ -10,8 +10,12 @@ import noticeBoard from '../../assets/noticeboard.png';
 import artistry from '../../assets/artistry.png';
 
 const Projects = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100); // Small delay to ensure transition starts first
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const projects = [
@@ -65,7 +69,13 @@ const Projects = () => {
   ];
 
   return (
-    <div className="py-12">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+      className="py-12"
+    >
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -230,7 +240,7 @@ const Projects = () => {
           Made with ❤️ by Priyansh Agarwal
         </motion.p>
       </footer>
-    </div>
+    </motion.div>
   );
 };
 
