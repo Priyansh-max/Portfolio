@@ -21,7 +21,7 @@ const Projects = () => {
   const projects = [
     {
       title: "FindMyTeam",
-      description: "FindmyTeam is a project which allows developers to make a team for any kind of project. Post an idea and users can apply over it. Then the poster could select the best team for the project.",
+      description: "FindmyTeam is a project which allows developers to make a team for any kind of project. Post an idea and users can apply over it. Then the idea poster could select the best developers for the project.",
       image: findMyTeam,
       skills: ["React", "Expressjs", "Supabase", "ChartJS", "Gemini", "Javascript"],
       github: "https://github.com/Priyansh-max/FindMyCoFounder",
