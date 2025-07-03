@@ -8,6 +8,7 @@ import pmis from '../../assets/pmis.png';
 import findMyTeam from '../../assets/findmyteam.png';
 import noticeBoard from '../../assets/noticeboard.png';
 import artistry from '../../assets/artistry.png';
+import searchgpt from '../../assets/searchgpt.png';
 
 const Projects = () => {
   useEffect(() => {
@@ -25,8 +26,17 @@ const Projects = () => {
       image: findMyTeam,
       skills: ["React", "Expressjs", "Supabase", "ChartJS", "Gemini", "Javascript"],
       github: "https://github.com/Priyansh-max/FindMyCoFounder",
-      deploy: "https://chess-trainer-demo.com",
-      status: "In Progress"
+      deploy: "https://findmyteam.vercel.app/",
+      status: "Live"
+    },
+    {
+      title: "SearchGPT",
+      description: "SearchGPT is a project which allows users to search for any information in the web it comes with 4 built in tools i.e web search, web scraping , content analysis and news aggregator.",
+      image: searchgpt,
+      skills: ["React", "Flask", "Python", "Selenium", "Gemini","AI"],
+      github: "https://github.com/Priyansh-max/SearchGPT",
+      deploy: "https://www.searchbot.live/",
+      status: "Live"
     },
     {
       title: "PMIS",

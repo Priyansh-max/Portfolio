@@ -18,6 +18,7 @@ import sixD from '../../assets/sixD.png';
 import findMyTeam from '../../assets/findmyteam.png';
 import iitkgp from '../../assets/iitkgp.png';
 import profile from '../../assets/profile.jpeg';
+import searchgpt from '../../assets/searchgpt.png';
 
 const Home = () => {
     const [flippedCards, setFlippedCards] = useState({});
@@ -32,12 +33,12 @@ const Home = () => {
     const workExperience = [
         {
           company: "SixD Engineering Solutions Pvt. Ltd.",
-          position: "Application Developer",
+          position: "Software Engineer",
           period: "Nov 2024 - Present",
           location: "Noida, India",
           type: "Internship",
           mode: "On-site",
-          description: "As a developer, I am responsible for developing projects for clients. Currently working on a project for a client to build a VR application for elevator safety training for there technicians.",
+          description: "As a Software Engineer at SixD Engineering Solutions Pvt. Ltd., I focus on the performance optimization of existing applications and systems.",
           logo: sixD,
           website: "https://sixdindia.com/"
         },
@@ -70,20 +71,22 @@ const Home = () => {
         title: "FindMyTeam",
         description: "FindmyTeam is a project which allows developers to make a team for any kind of project. Post an idea and users can apply over it. Then the poster could select the best team for the project.",
         image: findMyTeam,
-        technologies: ["React", "Expressjs", "Supabase","ChartJS", "Gemini" , "Javascript"],
+        technologies: ["ReactJs", "Expressjs", "Supabase","ChartJS", "Gemini" , "Javascript"],
         github: "https://github.com/Priyansh-max/FindMyCoFounder",
-        live: "https://chess-trainer-demo.com",
-        status: "In Progress"
+        live: "https://findmyteam.vercel.app/",
+        status: "Live"
       },
+
       {
-        title: "PMIS",
-        description: "PMIS is a platform which allows university placement cell to manage student record and data in a efficient manner eliminating manual paper and excel sheet.",
-        image: pmis,
-        technologies: ["React", "PostgreSQL", "Expressjs", "Prisma" , "Jwt" , "JavaScript"],
-        github: "https://github.com/Priyansh-max/PlacementManagementApp-PIMS-",
-        live: "https://smart-home-demo.com",
-        status: "In Progress"
+        title: "SearchGPT",
+        description: "SearchGPT is a project which allows users to search for any information in the web it comes with 4 built in tools i.e web search, web scraping , content analysis and news aggregator.",
+        image: searchgpt,
+        technologies: ["ReactJs", "FastAPI", "Python", "Selenium", "Gemini","AI"],
+        github: "https://github.com/Priyansh-max/SearchGPT",
+        live: "https://www.searchbot.live/",
+        status: "Live"
       },
+
       {
         title: "HireLink",
         description: "HireLink is a web3 platform which allows users to hire a developer for hourly bases and to have a 1 on 1 video call",
@@ -321,7 +324,7 @@ const Home = () => {
                             <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                               project.status === "Completed" ? "bg-green-500/90 text-white" :
                               project.status === "In Progress" ? "bg-yellow-500/90 text-white" :
-                              "bg-blue-500/90 text-white"
+                              "bg-green-500/90 text-white"
                             }`}>
                               {project.status}
                             </span>
